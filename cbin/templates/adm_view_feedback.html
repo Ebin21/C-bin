@@ -1,0 +1,43 @@
+{% include 'adminheader.html'%}
+<head>
+	<h1><center>view feedback</center></h1>
+</head>
+<body>
+	<form method="post">
+		<table align="center" border="1" class="table" id="customers">
+			<thead>
+				<tr>
+					<th>Sl no.</th>
+					<th>Customer name</th>
+					<th>Date</th>
+					<th>Feedback</th>
+					<th colspan="2">Reply</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['view']%}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['NAME']}}</td>
+					<td>{{row['date']}}</td>
+					<td>{{row['description']}}</td>
+					{% if row ['reply_description']=="Pending" %}
+				<td><textarea name="reply{{loop.index}}" class="form-control"></textarea>
+				<input  type="submit" name="replys{{loop.index}}" class="btn btn-primary" value="Send"></td>
+				<input type="hidden" name="fed_id{{loop.index}}" value="{{row['fed_id']}}">
+
+			{% else %}
+			<td>{{row['reply_description']}}</td>
+			{% endif %}
+			
+				</tr>
+				{% endfor %}
+			</tbody>
+
+			
+		</table>
+	</form>
+
+</body>
+{% include'footer.html'%}

@@ -1,0 +1,39 @@
+{% include 'managerheader.html'%}
+<center>
+<head>
+	<h1>view cago status</h1>
+</head>
+<body>
+	<form method="post"> 
+		<table border="1" align="center" class="=table" id="customers">
+			<thead>
+				<tr>
+					<th> customer name</th>
+					<th>place</th>
+					<th>datetime</th>
+				
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['view_status']%}
+
+				<tr>
+					<td>{{row['NAME']}}</td>
+					<td>{{row['place']}}</td>
+					<td>{{row['datetime']}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			
+		</table>
+		
+	</form>
+
+</body>
+</center>
+</html></title>
+</head>
+<body>
+
+</body>
+{% include'footer.html'%}

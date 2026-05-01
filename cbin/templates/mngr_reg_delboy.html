@@ -1,0 +1,82 @@
+{% include 'managerheader.html'%}
+<head>
+	<title></title>
+</head>
+<center><h1>Register delivery boy</h1></center>
+<center><body>
+	<form method="post">
+		<table style="width: 700px" class="table">
+			<tr>
+				<th>Firstname</th>
+				<td><input type="text"  class="form-control" name="fname" required=""></td>
+			</tr>
+			<tr>
+				<th>Lastname</th>
+				<td><input type="text"  class="form-control" name="lname" required=""></td>
+			</tr>
+			<tr>
+			<th>Branch name</th>
+			<td>
+				<select name="branch_name" class="form-control">
+					<option selected=""> select branch</option>
+					{% for row in data['view_branch'] %}
+					<option value="{{row['branch_id']}}">{{row['name']}}</option>
+					{% endfor %}
+				</select>
+	
+			</td>
+		</tr>
+	
+			<tr>
+				<th>Phone</th>
+				<td><input type="text"  class="form-control" name="phone"  required="" pattern="[0-9]{10}"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email"  class="form-control" name="email" required=""></td>
+			</tr>
+			<tr>
+				<th>User name</th>
+				<td><input type="text"  class="form-control" name="username" required=""></td>
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td><input type="password"  class="form-control" name="password" required=""></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" class="btn btn-primary" name="submit"></br></td>
+			</tr>
+		</table>
+
+		<table align="center" class="table" border="2" id="customers">
+			<thead>
+				<h1>view delivery boy</h1>
+				<tr>
+					<th>Sl no.</th>
+					<th>Fisrtname</th>
+					<th>Lastname</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Branch name</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['viewboy'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['f_name']}}</td>
+					<td>{{row['l_name']}}</td>
+					<td>{{row['phone']}}</td>
+					<td>{{row['email']}}</td>
+					<td>{{row['name']}}</td>
+					<td><a href="?action=delete&id={{row['boy_id']}}">Delete</a></td>
+
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</form>
+	</center>
+</body>
+{% include'footer.html'%}

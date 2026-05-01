@@ -1,0 +1,34 @@
+{% include 'managerheader.html'%}
+<center>
+<head>
+	<h1>view payment</h1>
+</head>
+<body>
+	<form method="post"> 
+		<table border="1" align="center" class="=table" id="customers">
+			<thead>
+				<tr>
+					<th> customer name</th>
+					<th>amount</th>
+					<th>date</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['viewpayment']%}
+
+				<tr>
+					<td>{{row['NAME']}}</td>
+					<td>{{row['amount_paid']}}</td>
+					<td>{{row['payment_date']}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			
+		</table>
+		
+	</form>
+
+</body>
+</center>
+{% include'footer.html'%}

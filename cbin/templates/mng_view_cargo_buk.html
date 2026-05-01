@@ -1,0 +1,68 @@
+{% include 'managerheader.html'%}
+<head>
+	<h1><center>view booking</center></h1>
+</head>
+<body>
+	<form method="post">
+		<table align="center" class="table" border="2" id="customers">
+			<thead>
+				<tr>
+					<th>Sl no.</th>
+					<th>Customer name</th>
+					<th>Branch name</th>
+					<th>Date</th>
+					<th>Weight</th>
+					<th>Height</th>
+					<th>From</th>
+					<th>To</th>
+					<th>Amount</th>
+					<th>Status</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['viewbook']%}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['f_name']}} {{row['l_name']}}</td>
+					<td>{{row['name']}}</td>
+					<td>{{row['booking_date']}}</td>
+					<td>{{row['Weight']}}</td>
+					<td>{{row['height']}}</td>
+					<td>{{row['from_location']}}</td>
+					<td>{{row['to_location']}}</td>
+					<td>{{row['amount']}}</td>
+					<td>{{row['booking_status']}}</td>
+					<td><a href="?action=status&id={{row['booking_id']}}">View Status</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{%if data['view_status']%}
+		<h1><center>Cargo status</center></h1>
+		<table border="1" align="center" class="=table" id="customers">
+			<thead>
+				<tr>
+					<th>Sl no.</th>
+					<th>place</th>
+					<th>datetime</th>
+				
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['view_status']%}
+
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['place']}}</td>
+					<td>{{row['datetime']}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			
+		</table>
+		{%endif%}
+	</form>
+
+</body>
+{% include'footer.html'%}

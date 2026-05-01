@@ -1,0 +1,110 @@
+{% include 'staffheader.html' %}>
+<head>
+	<h1><center>view booking</center></h1>
+</head>
+<body>
+	<form method="post">
+	{% if data['update_cargo'] %}
+	<table align="center" class="table" style="width: 700px;">
+		<tr>
+			<th>weight(kg)</th>
+			<td><input type="text"  class="form-control" name="weight" value="{{data['update_cargo'][0]['Weight']}}"></td>
+		</tr>
+		<tr>
+			<th>Height(m)</th>
+			<td><input type="text"  class="form-control" name="height" value="{{data['update_cargo'][0]['height']}}"></td>
+		</tr>
+		<tr>
+			<th>Width(m)</th>
+			<td><input type="text"  class="form-control" name="width" value="{{data['update_cargo'][0]['width']}}"></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center"><input type="submit" class="btn btn-primary" name="update" value="update"></td>
+		</tr>
+	</table>
+	{% elif data['samount']%}
+	<center><table class="table" style="width: 700px;">
+		<tr>
+			<th>Amount</th>
+			<td><input type="text"  class="form-control" name="amount"  required="" pattern="[0-9]{1,10}"></td>
+		</tr>
+	
+		<tr>
+			<td colspan="2" align="center"><input type="submit" class="btn btn-primary" name="submit" value="send amount"></td>
+		</tr>
+		
+	</table>
+	</center>
+
+	{% else %}
+	
+	{% endif %}
+
+		<table align="center" class="table" border="2" id="customers">
+			<thead>
+				<tr>
+					<th>Sl no.</th>
+					<th>Customer name</th>
+					<th>Date</th>
+					<th>Weight</th>
+					<th>Height</th>
+					<th>Width</th>
+					<th>From</th>
+					<th>To</th>
+					<th>Amount</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['viewbook']%}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['f_name']}} {{row['l_name']}}</td>
+					<td>{{row['booking_date']}}</td>
+					<td>{{row['Weight']}}</td>
+					<td>{{row['height']}}</td>
+					<td>{{row['width']}}</td>
+					<td>{{row['from_location']}}</td>
+					<td>{{row['to_location']}}</td>
+					<td>{{row['amount']}}</td>
+					<td>{{row['booking_status']}}</td>
+					{% if row['booking_status']=="paid" %}
+
+					<td><a href="?action=Accept&id={{row['booking_id']}}">Accept</a></td>
+					{% elif row['booking_status']=="cost sended" %}
+					<td><a href="?action=update&id={{row['booking_id']}}">Update</a></td>
+					{% elif row['booking_status']=="accepted" %}
+			<td><a href="?action=update&id={{row['booking_id']}}">Update</a></td>
+
+			<td><br>
+				Choose Delivery Boy:
+				
+				<select name="boyname{{loop.index}}" class="form-control">
+					<option selected="">Select boy</option>
+					{% for row in data['view_boy'] %}
+					 <option value="{{row['boy_id']}}">{{row['f_name']}} , {{row['name']}}</option>
+					{% endfor %}
+				</select></br>
+				<input type="text" hidden="" value="{{row['booking_id']}}" name="booking_id{{loop.index}}">
+				<input type="submit" name="assign{{loop.index}}" class="btn btn-primary">
+
+			</td>
+				{% elif row['booking_status']=="Pending" %}
+				<td><a href="?action=update&id={{row['booking_id']}}">Update</a></td>
+					<td><a href="?action=samount&id={{row['booking_id']}}">Send Amount To User</a></td>
+
+					{%else%}
+					<td><a href="?action=update&id={{row['booking_id']}}">Update</a></td>
+				
+					{%endif%}
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</form>
+</body>
+{% include 'footer.html'%}

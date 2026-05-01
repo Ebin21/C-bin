@@ -1,0 +1,43 @@
+
+{% include 'adminheader.html'%}
+<center>
+<head>
+	<h1>view review & rating</h1>
+</head>
+<body>
+	<form method="post"> 
+		<table border="1" align="center" class="=table" id="customers">
+			<thead>
+				<tr>
+					<th>Customer name</th>
+					<th>Branch name</th>
+					<th>Review coment</th>
+					<th>Ratting</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['view_review']%}
+
+				<tr>
+					<td>{{row['CNAME']}}</td>
+					<td>{{row['name']}}</td>
+					<td>{{row['review_coment']}}</td>
+					<td>{{row['rating_point']}}</td>
+					<td>{{row['review_date']}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			
+		</table>
+		
+	</form>
+
+</body>
+</center>
+</html></title>
+</head>
+<body>
+
+</body>
+{% include'footer.html'%}

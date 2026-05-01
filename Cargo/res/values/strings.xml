@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">C-Bin</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_boy_home">BoyHome</string>
+    <string name="title_activity_cust_home">CustHome</string>
+    <string name="title_activity_boy_view_assigncargos">BoyViewAssigncargos</string>
+    <string name="title_activity_boyupdatecargostatus">Boyupdatecargostatus</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_cust_view_nearby_cargoservice">CustViewNearbyCargoservice</string>
+    <string name="title_activity_cust_view_bookings">CustViewBookings</string>
+    <string name="title_activity_cust_send_feedback">CustSendFeedback</string>
+    <string name="title_activity_cust_rate">CustRate</string>
+    <string name="title_activity_cust_view_branches">CustViewBranches</string>
+    <string name="title_activity_cargo_prices">CargoPrices</string>
+    <string name="title_activity_cust_view_reviews">CustViewReviews</string>
+    <string name="title_activity_cust_book_cargo">CustBookCargo</string>
+    <string name="title_activity_cust_track_cargo">CustTrackCargo</string>
+    <string name="title_activity_custmakepayment">Custmakepayment</string>
+    <string name="title_activity_cust_view_cargocampanies">CustViewCargocampanies</string>
+    <string name="title_activity_update_profile">UpdateProfile</string>
+
+</resources>

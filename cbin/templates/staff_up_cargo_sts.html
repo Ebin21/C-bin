@@ -1,0 +1,33 @@
+{% include 'staffheader.html' %}
+<center>
+<head>
+	<h1>update cargo status</h1>
+</head>
+<body>
+	<form method="post">
+		<table class="table" style="width: 700px;">
+				<tr>
+			<th>customer name</th>
+			<td>
+				<select name="booking_id" class="form-control">
+					<option selected=""> select booking</option>
+					{% for row in data['bookings'] %}
+					<option value="{{row['customer_id']}}">{{row['NAME']}}</option>
+					{% endfor %}
+				</select>
+	
+			</td>
+		</tr>
+		<tr>
+			<th>place</th>
+			<td><input type="text"  class="form-control" name="place" required=""></td>
+		</tr>
+		
+		<tr>
+			<td align="center" colspan="2"><input type="submit" class="btn btn-primary" name="submit"></td>
+		</tr>
+	</table>
+
+</body>
+</center>
+{% include 'footer.html'%}

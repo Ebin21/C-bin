@@ -1,0 +1,118 @@
+{% include 'adminheader.html'%}
+
+<head>
+	<h1><center>manage cargo price</center></h1>
+	<title></title>
+</head>
+<body>
+	<form method="post">
+	{% if data['updatedata']%}
+	
+		<center><table class="table" style="width: 700px;">
+			<tr>
+				<th>max_weight</th>
+				<td><input type="text" name="max_weight"  class="form-control" value="{{data['updatedata'][0]['max_weight']}}"></td>
+			</tr>
+			<tr>
+				<th>max_height</th>
+				<td><input type="text" name="max_height"  class="form-control" value="{{data['updatedata'][0]['max_height']}}"></td>
+			</tr>
+			<tr>
+				<th>max_width</th>
+				<td><input type="text" name="max_width"  class="form-control" value="{{data['updatedata'][0]['max_width']}}"></td>
+			</tr>
+			<tr>
+				<th>max_distance</th>
+				<td><input type="text" name="max_distance"  class="form-control" value="{{data['updatedata'][0]['max_distance']}}"></td>
+				<tr>
+				<th>min_price</th>
+				<td><input type="text" name="min_price"  class="form-control" value="{{data['updatedata'][0]['min_price']}}"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" class="btn btn-primary" name="update" value="update"></td>
+			</tr>
+		</table>
+		</center>
+		{% else %}
+
+
+        <center><table class="table" style="width: 700px">
+			<tr>
+			<th>branch name</th>
+			<td>
+				<select name="branch_id" class="form-control">
+					<option selected=""> select branch</option>
+					{% for row in data['view_branch'] %}
+					<option value="{{row['branch_id']}}">{{row['name']}}</option>
+					{% endfor %}
+				</select>
+	
+			</td>
+		</tr>
+			
+			<tr>
+				<th>max_weight</th>
+				<td><input type="text" class="form-control" name="max_weight" placeholder="in kg" required="" pattern="[0-9]{0,5}"></td>
+			</tr>
+			<tr>
+				<th>max_height</th>
+				<td><input type="text"  class="form-control" name="max_height" placeholder="in meter"  required="" pattern="[0-9]{0,5}"></td>
+			</tr>
+			<tr>
+				<th>max_width</th>
+				<td><input type="text"  class="form-control" name="max_width"  required="" placeholder="in meter" pattern="[0-9]{0,5}"></td>
+			</tr>
+			<tr>
+				<th>max_distance</th>
+				<td><input type="text"  class="form-control" name="max_distance" placeholder="in km"  required="" pattern="[0-9]{0,10}"></td>
+				<tr>
+				<th>min_price</th>
+				<td><input type="text"  class="form-control" name="min_price"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" class="btn btn-primary" name="submit"></td>
+			</tr>
+		</table>
+		{% endif %}
+		</center>
+
+
+
+		<table align="center" border="1" class="table"  id="customers">
+			<thead>
+				<h1><center>view cargo price</center></h1>
+				<tr>
+					<th>Sl No.</th>
+					<th>branch name</th>
+					<th>max_weight</th>
+					<th>max_height</th>
+					<th>max_width</th>
+					<th>max_distance</th>
+					<th>min_price</th>
+					<th>--</th>
+					<th>--</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data['view_price']%}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['name']}}</td>
+					<td>{{row['max_weight']}}</td>
+					<td>{{row['max_height']}}</td>
+					<td>{{row['max_width']}}</td>
+					<td>{{row['max_distance']}}</td>
+					<td>{{row['min_price']}}</td>
+					<td><a href="?action=delete&id={{row['price_id']}}">Delete</a></td>
+		            <td><a href="?action=update&id={{row['price_id']}}">Update</a></td
+					
+					
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		
+	</form>
+
+</body>
+{% include'footer.html'%}
